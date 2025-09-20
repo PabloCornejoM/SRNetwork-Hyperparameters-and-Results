@@ -1,0 +1,12 @@
+Experiment: Nguyen-4
+Dataset: Nguyen-4
+Timestamp: 2025-08-30 19:45:41
+Final Equation: Matrix([[0.834248*x1**0.937422 + 1.27643*x1**1.91431 + 1.11974*x1**3.24094 + 0.948784*x1**4.1973 + 0.788629*x1**5.04728 + 1.03318*x1**5.99923]])
+MSE: 1.0078449577122228e-06
+RMSE: 0.0010039148619398475
+MAE: 0.0007609209860675037
+
+L-BFGS-B Optimization:
+Success: True
+Final Loss: 0.00077956
+Function Evaluations: 15

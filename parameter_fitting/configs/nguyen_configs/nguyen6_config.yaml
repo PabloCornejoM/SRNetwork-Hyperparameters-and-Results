@@ -1,0 +1,94 @@
+# Nguyen-6 Configuration for fitting the Nguyen-6 structure
+
+# configs/nguyen6_config.yaml
+experiment_name: "Nguyen-6"
+random_seed: 42
+
+# Function set
+function_set: 
+  - "SafeIdentityFunction"
+  - "SafeExp"
+  - "SafeLog"
+  - "SafeSin"
+  - "SafePower"
+  - "SafeCos"
+  - "ExpSwitchActivation"
+
+# Data configuration
+data:
+  dataset_name: "Nguyen-6"
+  path_to_data: "/Users/pablocornejo/Documents/Tesis/SRNetwork/data/raw/nguyen.txt"
+  train_ratio: 0.8
+  uncertainty_value: 0.0 # to add aleatoric uncertainty
+
+# Model parameters
+model:
+  input_size: 1
+  output_size: 1
+  num_layers: 3
+  nonlinear_info: [[2, 0], [2, 0], [0, 0]]
+  dropout_p: 0.0
+  min_connections_per_neuron: 1
+  exp_n: 6
+  output_combination_mode: "linear"
+  enable_phase: false
+
+training:
+  num_epochs: 2000
+  batch_size: 32
+  learning_rate: 0.01                        # Learning rate for AdamW optimizer
+  reg_strength: 0.0                          # L1 regularization strength for sparsity
+  decimal_penalty: 0.00                                                                                 # actually not working
+
+  optimizer: "adamw"                         # Options: "adam", adamw", "sgd"                           #actually not working
+  weight_decay: 1e-4                         # AdamW weight decay for better optimization stability
+  
+  # Learning rate scheduler configuration
+  scheduler: "none"                          # Options: "none", "cyclic", "cosine"
+  cyclic_step_size_up: 100                   # Steps per half cycle (oscillation frequency)
+  cyclic_base_lr: 0.1                        # Minimum learning rate in cycle
+  cyclic_max_lr: 2                           # Maximum learning rate in cycle  
+  cyclic_mode: "triangular2"                 # Mode: triangular, triangular2, exp_range
+  
+  
+  #Loss function configuration
+  loss:
+    type: "mse"                              # Options: "mse", "cvar", "topk"
+    alpha: 0.7
+    lam: 1.0
+    k: 5
+    use_derivatives: false                   # For enabling derivative constraints
+    deriv_weight: 1                          # Weight for derivative loss (0.0 to 1.0)
+  
+  use_connectivity_training: false
+  print_training_stats: true
+  print_equation_history: true               # Don't print equation history by default
+  
+  # Reward tracking configuration
+  track_rewards: true                        # Enable/disable reward tracking
+  reward_type: "nrmse"                       # Options: "nrmse", "tss", "dynamic", "struct"
+  reward_interval: 1                         # Compute reward every N epochs (to save computation)
+
+  # Checkpointing configuration
+  save_checkpoints: true                     # Enable/disable checkpoint saving
+  keep_top_k: 5                              # Number of best checkpoints to keep
+  
+  # Connectivity training parameters (used only if use_connectivity_training is true)
+  max_architectures: 10
+  max_patterns_per_layer: 5
+  num_parallel_trials: 1
+
+# L-BFGS-B optimization parameters (post-training after backpropagation)
+lbfgs:
+  enabled: true                             # Enable L-BFGS optimization on top-k checkpoints result
+  max_iterations: 1000
+  tolerance: 1e-8
+  criterion: "nrmse"                         # Options: 'mse', 'rmse', 'nrmse'
+
+# Output configuration
+output:
+  save_model: true
+  model_save_dir: "models"
+  checkpoint_dir: "checkpoints/"             # Directory for checkpoint saving
+  plot_results: true
+  results_dir: "results/fit/Nguyen-6/"

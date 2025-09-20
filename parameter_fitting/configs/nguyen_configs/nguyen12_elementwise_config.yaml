@@ -1,0 +1,49 @@
+experiment_name: "nguyen12_elementwise_power"
+
+# Data configuration
+data:
+  dataset_name: "Nguyen-12"
+  train_ratio: 0.8
+  uncertainty_value: 0.0
+  path_to_data: null
+
+# Model configuration
+model:
+  input_size: 2  # x0, x1
+  output_size: 1
+  num_layers: 2  # 1 hidden layer + output layer
+  nonlinear_info: [[4, 0]]  # 4 unary functions, 0 binary functions
+  dropout_p: 0.0
+  output_combination_mode: "linear"
+  enable_phase: false
+  exp_n: null  # We'll use custom function_set
+
+# Function set configuration
+# For Nguyen-12: x0^4 + x0^3 + 0.5*x1^2 - x1
+# We need 4 SafeElementwisePower functions:
+# - 2 for x0 terms (can learn x0^4, x0^3)  
+# - 2 for x1 terms (can learn x1^2, x1^1)
+function_set:
+  - "SafeElementwisePower_0"  # x0 terms
+  - "SafeElementwisePower_0"  # x0 terms
+  - "SafeElementwisePower_1"  # x1 terms
+  - "SafeElementwisePower_1"  # x1 terms
+
+# Training configuration
+training:
+  num_epochs: 1500
+  batch_size: 32
+  learning_rate: 0.001
+  reg_strength: 0.001
+  scheduler: "cosine"
+  track_rewards: false
+
+# Output configuration
+output:
+  plot_results: true
+  save_model: true
+  results_dir: "results/nguyen12_elementwise"
+  model_save_dir: "models/nguyen12_elementwise"
+
+# Random seed for reproducibility
+random_seed: 42 

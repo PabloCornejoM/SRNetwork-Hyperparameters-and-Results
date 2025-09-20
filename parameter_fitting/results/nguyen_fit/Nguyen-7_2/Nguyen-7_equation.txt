@@ -1,0 +1,12 @@
+Experiment: Nguyen-7
+Dataset: Nguyen-7
+Timestamp: 2025-08-30 20:35:02
+Final Equation: Matrix([[0.858225*log(0.987590670585632*x1**0.000783712 + 1.46921038627625*x1 + 2.57978248596191*x1**2.89823)]])
+MSE: 2.334359487576876e-05
+RMSE: 0.004831520840525627
+MAE: 0.004167692270129919
+
+L-BFGS-B Optimization:
+Success: True
+Final Loss: 0.00595631
+Function Evaluations: 12

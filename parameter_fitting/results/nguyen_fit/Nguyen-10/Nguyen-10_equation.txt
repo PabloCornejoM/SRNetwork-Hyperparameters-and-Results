@@ -1,0 +1,7 @@
+Experiment: Nguyen-10
+Dataset: Nguyen-10
+Timestamp: 2025-08-30 23:45:35
+Final Equation: y1 = 2.0015*sin(1.001*x1 + 0.00046*x2)*cos(0.00035*x1 + 0.99973*x2)
+MSE: 2.3468342078558635e-06
+RMSE: 0.0015319380909204483
+MAE: 0.001420391839928925

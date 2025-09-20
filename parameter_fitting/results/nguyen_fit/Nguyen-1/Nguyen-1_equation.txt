@@ -1,0 +1,12 @@
+Experiment: Nguyen-1
+Dataset: Nguyen-1
+Timestamp: 2025-08-30 16:01:22
+Final Equation: Matrix([[0.999992*x1**0.999997 + 1.0*x1**2.0 + 1.00001*x1**2.99997]])
+MSE: 3.6288986681072555e-13
+RMSE: 6.02403417815367e-07
+MAE: 4.7134750502664247e-07
+
+L-BFGS-B Optimization:
+Success: True
+Final Loss: 0.00000057
+Function Evaluations: 20

@@ -1,0 +1,12 @@
+Experiment: Nguyen-9
+Dataset: Nguyen-9
+Timestamp: 2025-08-30 22:48:02
+Final Equation: Matrix([[-0.594614*sin(0.0993184819817543*x1**2.03709 - 1.37686228752136*x2**1.51293) + 1.05697*sin(1.25294470787048*x1**2.03709 + 0.291320145130157*x2**1.51293)]])
+MSE: 0.007911001332104206
+RMSE: 0.08894380927085876
+MAE: 0.0760234147310257
+
+L-BFGS-B Optimization:
+Success: True
+Final Loss: 0.24091514
+Function Evaluations: 26
